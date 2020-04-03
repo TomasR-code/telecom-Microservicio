@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TelecomApplication<servicio>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.telecom.telecom.TelecomApplication",
+            "projectName": "servicio",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TelecomApi4Application<telecom-api4>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.telecom.telecomapi4.TelecomApi4Application",
+            "projectName": "telecom-api4",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TelecomApplication<telecom-api3>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.telecom.telecom.TelecomApplication",
+            "projectName": "telecom-api3",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TelecomApplication<telecom-api4>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.telecom.telecom.TelecomApplication",
+            "projectName": "telecom-api4",
+            "args": ""
+        }
+    ]
+}
