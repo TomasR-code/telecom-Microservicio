@@ -2,7 +2,6 @@ package com.telecom.telecom.model;
 
 import java.io.Serializable;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,14 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "PARTIDO")
-public class Partido implements Serializable{
-
+public class Partido implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,20 +27,19 @@ public class Partido implements Serializable{
 
 	@Column(name = "NOMBRE_PARTIDO")
 	private String nombrePartido;
-	
-	//@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    //@JoinColumn(name = "ID_PROVINCIA")
-    //private Provincia provincia;
 
-  	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "ID_PROVINCIA", nullable = false)
-    @JsonBackReference
-    private Provincia provincia;
+	// @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	// @JoinColumn(name = "ID_PROVINCIA")
+	// private Provincia provincia;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-    		 orphanRemoval = true, mappedBy = "partido")
-    @JsonManagedReference
-    private Set<Localidad> localidad;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "ID_PROVINCIA", nullable = false)
+	@JsonBackReference
+	private Provincia provincia;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "partido")
+	@JsonManagedReference
+	private Set<Localidad> localidad;
 
 	public Long getId() {
 		return id;
@@ -83,5 +79,4 @@ public class Partido implements Serializable{
 				+ localidad + "]";
 	}
 
-	
 }

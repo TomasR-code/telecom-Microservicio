@@ -17,7 +17,7 @@ public class PaisService {
 		return pais;
 	}
 
-	public void guardarPais(Pais pa) {
-		paisRepository.save(pa);
+	public void guardarPais(Pais pais) {
+		paisRepository.save(pais);
 	}
 }

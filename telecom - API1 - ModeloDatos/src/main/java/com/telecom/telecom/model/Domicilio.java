@@ -1,7 +1,6 @@
 package com.telecom.telecom.model;
 
 import java.io.Serializable;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,35 +11,34 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "DOMICILIO")
-public class Domicilio implements Serializable{
+public class Domicilio implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_DOMICILIO")
 	private Long id;
-	
+
 	@Column(name = "MU_CALLEJERO")
 	private Long mu_callejero;
 
 	@Column(name = "CALLE")
 	private String calle;
-	
+
 	@Column(name = "NUMERO")
 	private Integer numero;
-	
-	//@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    //@JoinColumn(name = "ID_BARRIO")
-    //private Barrio barrio;
-	
-  	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "ID_BARRIO", nullable = false)
-    @JsonBackReference
-    private Barrio barrio;
+
+	// @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	// @JoinColumn(name = "ID_BARRIO")
+	// private Barrio barrio;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "ID_BARRIO", nullable = false)
+	@JsonBackReference
+	private Barrio barrio;
 
 	public Long getId() {
 		return id;
@@ -84,13 +82,8 @@ public class Domicilio implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Domicilio [id=" + id + 
-				", mu_callejero=" + mu_callejero + 
-				", calle=" + calle + 
-				", numero=" + numero
+		return "Domicilio [id=" + id + ", mu_callejero=" + mu_callejero + ", calle=" + calle + ", numero=" + numero
 				+ ", barrio=" + barrio + "]";
 	}
-
-	
 
 }

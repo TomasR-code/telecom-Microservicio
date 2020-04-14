@@ -14,7 +14,7 @@ public class BarrioService {
 
 	public Barrio guardarBarrio(Barrio barrio) {
 		Barrio barrioGuardado = barrioRepository.save(barrio);
-		return barrio;	
+		return barrioGuardado;	
 	}
 
 	public Optional<Barrio> buscarBarrio(Long ba) {

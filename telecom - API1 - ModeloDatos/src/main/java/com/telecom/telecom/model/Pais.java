@@ -1,8 +1,6 @@
 package com.telecom.telecom.model;
 
-import java.io.Serializable;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,27 +9,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.CascadeType;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "PAIS")
-public class Pais{
+public class Pais {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_PAIS")
 	private Long id;
-	
+
 	@Column(name = "NOMBRE_PAIS")
 	private String nombrePais;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL,
-    		 orphanRemoval = true, mappedBy = "pais")
-    @JsonManagedReference
-    private Set<Provincia> provincia;
+	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL, orphanRemoval = true, mappedBy = "pais")
+	@JsonManagedReference
+	private Set<Provincia> provincia;
 
 	public Long getId() {
 		return id;

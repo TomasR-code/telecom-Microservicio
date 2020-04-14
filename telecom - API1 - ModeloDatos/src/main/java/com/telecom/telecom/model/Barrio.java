@@ -2,7 +2,6 @@ package com.telecom.telecom.model;
 
 import java.io.Serializable;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,38 +13,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "BARRIO")
-public class Barrio implements Serializable{
+public class Barrio implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_BARRIO")
 	private Long id;
 
-	
-
-
 	@Column(name = "NOMBRE")
 	private String nombre;
-	
-	//@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    //@JoinColumn(name = "ID_LOCALIDAD")
-    //private Localidad localidad;
-	
-  	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "ID_LOCALIDAD", nullable = false)
-    @JsonBackReference
-    private Localidad localidad;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-    		 orphanRemoval = true, mappedBy = "barrio")
-    @JsonManagedReference
-    private Set<Domicilio> domicilio;
+	// @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	// @JoinColumn(name = "ID_LOCALIDAD")
+	// private Localidad localidad;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "ID_LOCALIDAD", nullable = false)
+	@JsonBackReference
+	private Localidad localidad;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "barrio")
+	@JsonManagedReference
+	private Set<Domicilio> domicilio;
 
 	public Long getId() {
 		return id;
@@ -78,7 +72,6 @@ public class Barrio implements Serializable{
 	public void setDomicilio(Set<Domicilio> domicilio) {
 		this.domicilio = domicilio;
 	}
-
 
 	@Override
 	public String toString() {
