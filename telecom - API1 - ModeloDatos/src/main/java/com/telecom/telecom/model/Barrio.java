@@ -1,7 +1,5 @@
 package com.telecom.telecom.model;
 
-import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,30 +9,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "BARRIO")
-public class Barrio implements Serializable {
+public class Barrio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_BARRIO")
 	private Long id;
 
-	@Column(name = "NOMBRE")
+	@Column(name = "NOMBRE_BARRIO")
 	private String nombre;
 
 	// @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	// @JoinColumn(name = "ID_LOCALIDAD")
 	// private Localidad localidad;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "ID_LOCALIDAD", nullable = false)
-	@JsonBackReference
+	@JsonBackReference 
 	private Localidad localidad;
 
 //	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "barrio")

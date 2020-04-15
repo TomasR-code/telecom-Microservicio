@@ -24,7 +24,7 @@ public class Domicilio {
 	@Column(name = "MU_CALLEJERO")
 	private Long mu_callejero;
 
-	@Column(name = "CALLE")
+	@Column(name = "NOMBRE_CALLE")
 	private String calle;
 
 	@Column(name = "NUMERO")
@@ -34,9 +34,9 @@ public class Domicilio {
 	// @JoinColumn(name = "ID_BARRIO")
 	// private Barrio barrio;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "ID_BARRIO", nullable = false)
-	@JsonBackReference
+	@JsonBackReference 
 	private Barrio barrio;
 
 	public Long getId() {

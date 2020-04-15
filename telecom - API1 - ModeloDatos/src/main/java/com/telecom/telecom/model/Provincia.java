@@ -1,6 +1,5 @@
 package com.telecom.telecom.model;
 
-import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,9 +24,9 @@ public class Provincia {
 	@Column(name = "NOMBRE_PROVINCIA")
 	private String nombreProvincia;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "ID_PAIS", nullable = false)
-	@JsonBackReference
+	@JsonBackReference 
 	private Pais pais;
 
 //	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "provincia")

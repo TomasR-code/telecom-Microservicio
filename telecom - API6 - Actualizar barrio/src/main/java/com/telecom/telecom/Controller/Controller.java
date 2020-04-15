@@ -35,7 +35,7 @@ public class Controller {
 		if (barrio != null) {
 			Barrio barrioGuardado = barrio.get();
 			barrioGuardado.setNombre("Villa Urquiza");
-		barrioGuardado = barService.guardarBarrio(barrioGuardado);
+			barrioGuardado = barService.guardarBarrio(barrioGuardado);
 			return new ResponseEntity<>(barrio, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>("No se pudo guardar", HttpStatus.BAD_REQUEST);

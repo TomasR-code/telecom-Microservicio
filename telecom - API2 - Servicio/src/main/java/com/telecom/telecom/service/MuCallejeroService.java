@@ -27,7 +27,7 @@ public class MuCallejeroService {
 		return pronvicia;
 	}
 
-	public boolean buscarEnMuCallejero(long pais, Long provincia, long partido, long localidad, long barrio, Domicilio domicilio) {
+	public boolean buscarEnMuCallejero(long provincia, String partido, String localidad, String barrio, String domicilio) {
 		return true;
 	}
 

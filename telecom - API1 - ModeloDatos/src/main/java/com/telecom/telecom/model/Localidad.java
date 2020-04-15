@@ -1,6 +1,5 @@
 package com.telecom.telecom.model;
 
-import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "LOCALIDAD")
-public class Localidad implements Serializable {
+public class Localidad {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +28,7 @@ public class Localidad implements Serializable {
 	// @JoinColumn(name = "ID_PARTIDO")
 	// private Partido partido;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "ID_PARTIDO", nullable = false)
 	@JsonBackReference
 	private Partido partido;

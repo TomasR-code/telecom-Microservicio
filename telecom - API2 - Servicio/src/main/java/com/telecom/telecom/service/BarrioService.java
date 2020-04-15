@@ -22,5 +22,4 @@ public class BarrioService {
 		return barrio;
 	}
 
-
 }

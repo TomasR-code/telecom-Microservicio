@@ -59,6 +59,16 @@
             "mainClass": "com.telecom.telecom.TelecomApplication",
             "projectName": "modelo",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TelecomApplication<telecom-api7>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.telecom.telecom.TelecomApplication",
+            "projectName": "telecom-api7",
+            "args": ""
         }
     ]
 }
