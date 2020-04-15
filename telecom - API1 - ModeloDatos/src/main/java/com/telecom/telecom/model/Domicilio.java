@@ -1,6 +1,5 @@
 package com.telecom.telecom.model;
 
-import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "DOMICILIO")
-public class Domicilio implements Serializable {
+public class Domicilio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

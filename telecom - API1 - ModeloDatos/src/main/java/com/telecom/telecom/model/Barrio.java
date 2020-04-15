@@ -37,9 +37,9 @@ public class Barrio implements Serializable {
 	@JsonBackReference
 	private Localidad localidad;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "barrio")
-	@JsonManagedReference
-	private Set<Domicilio> domicilio;
+//	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "barrio")
+//	@JsonManagedReference
+//	private Set<Domicilio> domicilio;
 
 	public Long getId() {
 		return id;
@@ -65,17 +65,8 @@ public class Barrio implements Serializable {
 		this.localidad = localidad;
 	}
 
-	public Set<Domicilio> getDomicilio() {
-		return domicilio;
-	}
-
-	public void setDomicilio(Set<Domicilio> domicilio) {
-		this.domicilio = domicilio;
-	}
-
 	@Override
 	public String toString() {
-		return "Barrio [id=" + id + ", nombre=" + nombre + ", localidad=" + localidad + ", domicilio=" + domicilio
-				+ "]";
+		return "Barrio [id=" + id + ", nombre=" + nombre + ", localidad=" + localidad + "]";
 	}
 }

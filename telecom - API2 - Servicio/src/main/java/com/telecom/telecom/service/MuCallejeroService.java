@@ -1,9 +1,8 @@
 package com.telecom.telecom.service;
 
-import java.util.List;
-import java.util.Optional;
-import com.telecom.telecom.model.Pais;
-import com.telecom.telecom.persistencia.PaisPersistencia;
+import com.telecom.telecom.model.Domicilio;
+import com.telecom.telecom.model.Provincia;
+import com.telecom.telecom.persistencia.ProvinciaPersistencia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +10,9 @@ import org.springframework.stereotype.Service;
 public class MuCallejeroService {
 
     @Autowired
-	PaisPersistencia paisPersistencia;
+	ProvinciaPersistencia ProvinciaPersistencia;
 
-    public boolean verificarEnMuCallejero(Optional<Pais> pais) {
+    public boolean verificarEnMuCallejero() {
         int numero;
         boolean bool = true;
         numero = (int) (Math.random() * 10) + 1;
@@ -23,9 +22,13 @@ public class MuCallejeroService {
         return bool;
     }
 
-	public Pais buscarPais(Long pa) {
-        Pais pais = paisPersistencia.getPaisById(pa);
-		return pais;
+	public Provincia buscarProvincia(Long pa) {
+		Provincia pronvicia = ProvinciaPersistencia.getPaisById(pa);
+		return pronvicia;
+	}
+
+	public boolean buscarEnMuCallejero(long pais, Long provincia, long partido, long localidad, long barrio, Domicilio domicilio) {
+		return true;
 	}
 
 }
