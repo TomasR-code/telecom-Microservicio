@@ -33,6 +33,7 @@ public class MuCallejeroController {
 		boolean resultadoMuCallejero = false;
 		resultadoMuCallejero = muCallejeroService.buscarEnMuCallejero(idProvincia, partido, localidad,
 				barrio, domicilio);
+
 		return resultadoMuCallejero != false ? new ResponseEntity<>("ok", HttpStatus.OK)
 				: new ResponseEntity<>("No encontrado", HttpStatus.BAD_REQUEST);
 	}

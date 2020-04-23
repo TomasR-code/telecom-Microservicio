@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 public class MuCallejeroService {
 
     @Autowired
-	DomicilioPersistencia domicilioPersistencia;
-    
+    DomicilioPersistencia domicilioPersistencia;
+
     @Autowired
     BarrioService barrioService;
 
@@ -25,14 +25,19 @@ public class MuCallejeroService {
         return bool;
     }
 
+    public boolean buscarEnMuCallejero(long provincia, String partido, String localidad, String barrio,
+            String calle) {
+        /*
+         * List<Domicilio> domicilios =
+         * domicilioPersistencia.getDomicilioByName(domicilio);
+         */
 
-	public boolean buscarEnMuCallejero(long provincia, String partido, String localidad, String barrio, String domicilio) {
-		List<Domicilio> domicilios = domicilioPersistencia.getDomicilioByName(domicilio);
-		if(domicilio.isEmpty()) {
-			barrioService.buscarBarrioPorNombre(domicilios, barrio);
-			return true;
-		}
-		return false;
-	}
+        if (domicilioPersistencia.getDomicilio(calle, barrio, partido, localidad, provincia) == null) {
+            /* Simulo que existe en MuCallejero entonces lo agrego, empezar a validar desde arriba */
+            
+            return true;
+        }
+        return false;
+    }
 
 }
