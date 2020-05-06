@@ -1,44 +1,36 @@
 package com.telecom.telecom.Controller;
 
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.telecom.telecom.model.Domicilio;
-import com.telecom.telecom.service.DomicilioService;
+import com.telecom.telecom.service.BasePropiaService;
 import com.telecom.telecom.service.MuCallejeroService;
-import com.telecom.telecom.service.PaisService;
 
 @RestController
-public class MuCallejeroController {
-
-	@Autowired
-	PaisService paisService;
+public class DomicilioController {
 
 	@Autowired
 	MuCallejeroService muCallejeroService;
 
 	@Autowired
-	DomicilioService domicilioService;
+	BasePropiaService BasePropiaService;
 
-	@PostMapping("/buscarMuCallejero/{idProvincia}/{partido}/{localidad}/{barrio}/{domicilio}")
+	@PostMapping("/buscarBasePropia/{idProvincia}/{partido}/{localidad}/{barrio}/{domicilio}/{numeroDomicilio}")
 	public ResponseEntity<?> BuscarMuCallejero(@PathVariable long idProvincia,
 			@PathVariable String partido, @PathVariable String localidad, @PathVariable String barrio,
-			@PathVariable String domicilio) {
-		boolean resultadoMuCallejero = false;
-		resultadoMuCallejero = muCallejeroService.buscarEnMuCallejero(idProvincia, partido, localidad,
-				barrio, domicilio);
+			@PathVariable String domicilio, @PathVariable Long numeroDomicilio) {
+		boolean resultadoBusquedaEnNuestraBase = false;
+		resultadoBusquedaEnNuestraBase = BasePropiaService.buscarEnNuestraBase(idProvincia, partido, localidad,
+				barrio, domicilio,numeroDomicilio);
 
-		return resultadoMuCallejero != false ? new ResponseEntity<>("ok", HttpStatus.OK)
+		return resultadoBusquedaEnNuestraBase != false ? new ResponseEntity<>("ok", HttpStatus.OK)
 				: new ResponseEntity<>("No encontrado", HttpStatus.BAD_REQUEST);
 	}
 
-	@GetMapping("/domicilio/{id}")
+/* 	@GetMapping("/domicilio/{id}")
 	public ResponseEntity<?> getDomicilio(@PathVariable long id) {
 		Optional domicilio = domicilioService.buscarDomicilio(id);
 		if (domicilio.isPresent()) {
@@ -47,7 +39,7 @@ public class MuCallejeroController {
 		} else {
 			return new ResponseEntity<>("no encotrada", HttpStatus.NO_CONTENT);
 		}
-	}
+	} */
 
 	/*
 	 * @GetMapping("/provincia/{id}") public ResponseEntity<?>
@@ -76,10 +68,10 @@ public class MuCallejeroController {
 //				: new ResponseEntity<>("No encontrado", HttpStatus.BAD_REQUEST);
 //	}
 
-	@GetMapping("/domicilioBody")
+/* 	@GetMapping("/domicilioBody")
 	public ResponseEntity<?> domiiclioBody(@RequestBody Domicilio domicilio) {
 		Optional dom = domicilioService.buscarDomicilio(domicilio.getId());
 		return dom != null ? new ResponseEntity<>(dom, HttpStatus.OK)
 				: new ResponseEntity<>("No encontrado", HttpStatus.BAD_REQUEST);
-	}
+	} */
 }

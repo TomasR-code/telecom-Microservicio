@@ -1,19 +1,9 @@
 package com.telecom.telecom.service;
 
-import com.telecom.telecom.model.Domicilio;
-import com.telecom.telecom.persistencia.DomicilioPersistencia;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MuCallejeroService {
-
-    @Autowired
-    DomicilioPersistencia domicilioPersistencia;
-
-    @Autowired
-    BarrioService barrioService;
 
     public boolean verificarEnMuCallejero() {
         int numero;
@@ -24,20 +14,4 @@ public class MuCallejeroService {
         }
         return bool;
     }
-
-    public boolean buscarEnMuCallejero(long provincia, String partido, String localidad, String barrio,
-            String calle) {
-        /*
-         * List<Domicilio> domicilios =
-         * domicilioPersistencia.getDomicilioByName(domicilio);
-         */
-
-        if (domicilioPersistencia.getDomicilio(calle, barrio, partido, localidad, provincia) == null) {
-            /* Simulo que existe en MuCallejero entonces lo agrego, empezar a validar desde arriba */
-            
-            return true;
-        }
-        return false;
-    }
-
 }
