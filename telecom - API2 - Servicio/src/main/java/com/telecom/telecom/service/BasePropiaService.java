@@ -34,45 +34,28 @@ public class BasePropiaService {
     DomicilioPersistencia domicilioPersistencia;
 
     public boolean buscarEnNuestraBase(long idProvincia, String partido, String localidad, String barrio, String calle,
-            Long numeroDomicilio) {
+            Integer numeroDomicilio) {
         if (domicilioPersistencia.getDomicilio(idProvincia, partido, localidad, barrio, calle,
                 numeroDomicilio) == null) {
-            /*
-             * Simulo que existe en MuCallejero entonces lo agrego, empezar a validar desde
-             * arriba
-             */
             Optional<Provincia> provinciaEncontrada = provinciaRepository.findById(idProvincia);
             Partido partidoEncontrado = partidoPersistencia.getPartidoByNameAndIdProvincia(provinciaEncontrada.get(),
                     partido);
-            if (partidoEncontrado != null) {
-                Localidad localidadEncontrada = localidadPersistencia.getlocalidadByNameAndPartido(partidoEncontrado,
-                        localidad);
-                if (localidadEncontrada != null) {
-                    Barrio barrioEncontrado = barrioPersistencia.getBarrioByNameAndLocalidad(localidadEncontrada,
-                            barrio);
-                    if (barrioEncontrado != null) {
-                        Domicilio domicilioEncontrado = domicilioPersistencia.getDomicilioByBarrio(barrioEncontrado,
-                                calle, numeroDomicilio);
-                        if (domicilioEncontrado != null) {
-                            System.out.println("Todo correcto");
-                            return true;
-                        } else {
-                            System.out.println("Fue el domicilio");
-                            return false;
-                        }
-                    }else{
-                        System.out.println("Fue el barrio");
-                        return false;
-                    }
-
-                } else {
-                    System.out.println("Fue la localidad");
+            Localidad localidadEncontrada = localidadPersistencia.getlocalidadByNameAndPartido(partidoEncontrado,
+                    localidad);
+            Barrio barrioEncontrado = barrioPersistencia.getBarrioByNameAndLocalidad(localidadEncontrada, barrio);
+            Domicilio domicilioEncontrado = domicilioPersistencia.getDomicilioByBarrio(barrioEncontrado, calle,
+                    numeroDomicilio);
                     return false;
-                }
-            } else {
-                System.out.println("Fue el partido");
-                return false;
-            }
+          /*   if () {
+                partidoEncontrado.setNombrePartido(partido);
+
+            } else if (localidadEncontrada == null) {
+
+            } else if (barrioEncontrado == null) {
+
+            } else if (domicilioEncontrado == null) {
+
+            } */
         } else {
             return true;
         }

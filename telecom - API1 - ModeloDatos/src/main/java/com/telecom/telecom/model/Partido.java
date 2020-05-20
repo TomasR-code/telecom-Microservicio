@@ -66,4 +66,7 @@ public class Partido {
 		return "Partido [id=" + id + ", nombrePartido=" + nombrePartido + ", provincia=" + provincia + "]";
 	}
 
+	public Partido() {
+	}
+
 }

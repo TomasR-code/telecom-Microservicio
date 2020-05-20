@@ -21,7 +21,7 @@ public class DomicilioController {
 	@PostMapping("/buscarBasePropia/{idProvincia}/{partido}/{localidad}/{barrio}/{domicilio}/{numeroDomicilio}")
 	public ResponseEntity<?> BuscarMuCallejero(@PathVariable long idProvincia,
 			@PathVariable String partido, @PathVariable String localidad, @PathVariable String barrio,
-			@PathVariable String domicilio, @PathVariable Long numeroDomicilio) {
+			@PathVariable String domicilio, @PathVariable Integer numeroDomicilio) {
 		boolean resultadoBusquedaEnNuestraBase = false;
 		resultadoBusquedaEnNuestraBase = BasePropiaService.buscarEnNuestraBase(idProvincia, partido, localidad,
 				barrio, domicilio,numeroDomicilio);

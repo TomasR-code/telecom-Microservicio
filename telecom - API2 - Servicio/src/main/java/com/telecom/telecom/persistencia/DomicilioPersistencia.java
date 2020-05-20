@@ -17,7 +17,7 @@ public class DomicilioPersistencia {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Domicilio getDomicilioByBarrio(Barrio barrio, String calle, Long numeroDomicilio) {
+    public Domicilio getDomicilioByBarrio(Barrio barrio, String calle, Integer numeroDomicilio) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 
         CriteriaQuery<Domicilio> criteriaQuery = criteriaBuilder.createQuery(Domicilio.class);
@@ -35,7 +35,7 @@ public class DomicilioPersistencia {
     }   
 
 	public Object getDomicilio(long idProvincia, String partido, String localidad, String barrio, String calle,
-			Long numeroDomicilio) {
+			Integer numeroDomicilio) {
 		return null;
     }
     
